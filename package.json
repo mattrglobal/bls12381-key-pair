@@ -1,0 +1,76 @@
+{
+  "name": "@mattrglobal/bls12381-key-pair",
+  "version": "0.0.1",
+  "description": "A library for using BLS 12-381 key pairs with BBS+ signatures",
+  "homepage": "https://github.com/mattrglobal/bls12381-key-pair",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattrglobal/bls12381-key-pair"
+  },
+  "license": "Apache 2.0",
+  "private": false,
+  "scripts": {
+    "test": "jest",
+    "build": "tsc --pretty",
+    "clean": "rm -rf lib/",
+    "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
+    "lint": "eslint . --ext .ts --color --format=table",
+    "lint:fix": "yarn lint --fix",
+    "pre-pr": "yarn clean && yarn format && yarn lint:fix && yarn build && yarn test",
+    "publish:unstable": "./scripts/publish_unstable.sh",
+    "publish:release": "./scripts/publish.sh",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@types/jest": "25.2.1",
+    "@types/node": "12.7.2",
+    "@types/bs58": "4.0.1",
+    "@typescript-eslint/eslint-plugin": "2.28.0",
+    "@typescript-eslint/parser": "2.28.0",
+    "conventional-changelog": "3.1.18",
+    "conventional-changelog-cli": "2.0.31",
+    "cz-conventional-changelog": "3.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "4.2.5",
+    "jest": "25.4.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
+    "ts-jest": "25.4.0",
+    "ts-node": "8.4.1",
+    "typescript": "3.7.5"
+  },
+  "dependencies": {
+    "@mattrglobal/node-bbs-signatures": "0.7.0",
+    "bs58": "4.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "[[ -n $HUSKY_BYPASS ]] || pretty-quick --staged"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
