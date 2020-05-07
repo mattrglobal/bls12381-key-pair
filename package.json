@@ -15,7 +15,6 @@
     "type": "git",
     "url": "git+https://github.com/mattrglobal/bls12381-key-pair"
   },
-  "license": "Apache 2.0",
   "private": false,
   "scripts": {
     "test": "jest",
