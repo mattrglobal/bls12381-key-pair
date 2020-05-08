@@ -4,6 +4,7 @@
 
 ![push-master](https://github.com/mattrglobal/bls12381-key-pair/workflows/push-master/badge.svg)
 ![push-release](https://github.com/mattrglobal/bls12381-key-pair/workflows/push-release/badge.svg)
+![codecov](https://codecov.io/gh/mattrglobal/bls12381-key-pair/branch/master/graph/badge.svg)
 
 This library supports generating [BLS12-381](https://tools.ietf.org/html/draft-irtf-cfrg-pairing-friendly-curves-02#section-2.4) key pairs and supports the
 signing and verification of BBS+ signatures.
