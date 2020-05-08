@@ -12,29 +12,50 @@
  */
 
 import {
-    exampleBls12381KeyPair,
-    exampleMultiMessage,
-    exampleMultiMessageSignature,
-    exampleSingleMessage,
-    exampleSingleMessageSignature,
-    badSignature,
-    badSignatureBadLength
-  } from "./__fixtures__";
-  
-  import { Bls12381G2KeyPair } from "../src";
-  import {
-    DEFAULT_BLS12381_PRIVATE_KEY_LENGTH,
-    DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
-  } from "@mattrglobal/node-bbs-signatures";
-  import base58 from "bs58";
-  
-  const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
-  const { sign } = key.signer();
-  const { verify } = key.verifier();
-  
+  exampleBls12381KeyPair,
+  exampleMultiMessage,
+  exampleMultiMessageSignature,
+  exampleSingleMessage,
+  exampleSingleMessageSignature,
+  badSignature,
+  badSignatureBadLength
+} from "./__fixtures__";
+
+import { Bls12381G2KeyPair } from "../src";
+import {
+  DEFAULT_BLS12381_PRIVATE_KEY_LENGTH,
+  DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+} from "@mattrglobal/node-bbs-signatures";
+import base58 from "bs58";
+
+const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+const { sign } = key.signer();
+const { verify } = key.verifier();
+
 describe("Bls12381G2KeyPair", () => {
   it("should load public private key from options correctly", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+
+    expect(myLdKey.id).toBe("did:example:489398593#test");
+    expect(myLdKey.type).toBe("Bls12381G2Key2020");
+    expect(myLdKey.controller).toBe("did:example:489398593");
+
+    expect(myLdKey.privateKeyBuffer).toBeDefined();
+    expect(myLdKey.publicKeyBuffer).toBeDefined();
+
+    expect(myLdKey.privateKeyBuffer?.length).toBe(
+      DEFAULT_BLS12381_PRIVATE_KEY_LENGTH
+    );
+    expect(myLdKey.publicKeyBuffer.length).toBe(
+      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+    );
+
+    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.privateKey).toEqual(exampleBls12381KeyPair.privateKeyBase58);
+  });
+
+  it("should load public private key from options using .from()", async () => {
+    const myLdKey = await Bls12381G2KeyPair.from(exampleBls12381KeyPair);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
     expect(myLdKey.type).toBe("Bls12381G2Key2020");
@@ -75,6 +96,27 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
+  it("should load public key from options correctly using .from()", async () => {
+    let keyOptions = { ...exampleBls12381KeyPair };
+    delete keyOptions.privateKeyBase58;
+
+    const myLdKey = await Bls12381G2KeyPair.from(keyOptions);
+
+    expect(myLdKey.id).toBe("did:example:489398593#test");
+    expect(myLdKey.type).toBe("Bls12381G2Key2020");
+    expect(myLdKey.controller).toBe("did:example:489398593");
+
+    expect(myLdKey.privateKeyBuffer).toBeUndefined();
+    expect(myLdKey.publicKeyBuffer).toBeDefined();
+
+    expect(myLdKey.publicKeyBuffer.length).toBe(
+      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+    );
+
+    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.privateKey).toBeUndefined();
+  });
+
   it("should add encoded public key", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
@@ -86,24 +128,32 @@ describe("Bls12381G2KeyPair", () => {
   it("should create correct public key fingerprint", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
-    const fingerprint = Bls12381G2KeyPair.fingerprintFromPublicKey({ publicKeyBase58: myLdKey.publicKey });
-    
-    expect(fingerprint).toEqual("zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE");
+    const fingerprint = Bls12381G2KeyPair.fingerprintFromPublicKey({
+      publicKeyBase58: myLdKey.publicKey
+    });
+
+    expect(fingerprint).toEqual(
+      "zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+    );
   });
 
   it("should create correct public key fingerprint from key", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
     const fingerprint = myLdKey.fingerprint();
-    
-    expect(fingerprint).toEqual("zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE");
+
+    expect(fingerprint).toEqual(
+      "zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+    );
   });
 
   it("should verify fingerprint", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
-    const result = myLdKey.verifyFingerprint("zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE");
-    
+    const result = myLdKey.verifyFingerprint(
+      "zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+    );
+
     expect(result.valid).toBeTruthy();
   });
 
@@ -113,16 +163,22 @@ describe("Bls12381G2KeyPair", () => {
     const result = myLdKey.verifyFingerprint("aUC6FJ5FE226r");
 
     expect(result.valid).toBeFalsy();
-    expect(result.error).toEqual(new Error('`fingerprint` must be a multibase encoded string.'));
+    expect(result.error).toEqual(
+      new Error("`fingerprint` must be a multibase encoded string.")
+    );
   });
 
   it("should throw error when fingerprint does not match", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
-    const result = myLdKey.verifyFingerprint("zUC6FJ5FE226r7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE");
+    const result = myLdKey.verifyFingerprint(
+      "zUC6FJ5FE226r7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+    );
 
     expect(result.valid).toBeFalsy();
-    expect(result.error).toEqual(new Error('The fingerprint does not match the public key.'));
+    expect(result.error).toEqual(
+      new Error("The fingerprint does not match the public key.")
+    );
   });
 
   it("should throw error when fingerprint not valid base58", async () => {
@@ -131,7 +187,7 @@ describe("Bls12381G2KeyPair", () => {
     const result = myLdKey.verifyFingerprint("z------");
 
     expect(result.valid).toBeFalsy();
-    expect(result.error).toEqual(new Error('Non-base58 character'));
+    expect(result.error).toEqual(new Error("Non-base58 character"));
   });
 
   it("should generate new key", async () => {
@@ -159,9 +215,11 @@ describe("Bls12381G2KeyPair", () => {
     const myLdKey = await Bls12381G2KeyPair.generate({
       id: "test-key-id",
       controller: "test-key-controller",
-      seed: new Uint8Array(base58.decode(
-        "2Dk1kmfJaZT2wbWd81piFyKBkd2ip29B3rfEpLud4bCBK3MwUXfk2z3YSLFeNojENkJzW"
-      ))
+      seed: new Uint8Array(
+        base58.decode(
+          "2Dk1kmfJaZT2wbWd81piFyKBkd2ip29B3rfEpLud4bCBK3MwUXfk2z3YSLFeNojENkJzW"
+        )
+      )
     });
 
     expect(myLdKey.id).toBe("test-key-id");
@@ -177,7 +235,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.publicKeyBuffer.length).toBe(
       DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
     );
-    
+
     expect(myLdKey.privateKeyBuffer).toEqual(
       base58.decode("5o1vfbtkHtnqfitTw7HxiLRpq9xqjwKErS2HxgReb2DD")
     );
@@ -187,14 +245,16 @@ describe("Bls12381G2KeyPair", () => {
       )
     );
   });
-  
+
   it("should throw error on sign when no private key", async () => {
     let keyOptions = exampleBls12381KeyPair;
     delete keyOptions.privateKeyBase58;
     const badKey = new Bls12381G2KeyPair(keyOptions);
     const { sign } = badKey.signer();
     expect(typeof sign).toBe("function");
-    await expect(sign({ data: exampleSingleMessage })).rejects.toThrowError("No private key to sign with.");
+    await expect(sign({ data: exampleSingleMessage })).rejects.toThrowError(
+      "No private key to sign with."
+    );
   });
 
   it("should sign single message", async () => {

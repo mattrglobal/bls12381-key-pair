@@ -187,6 +187,16 @@ export class Bls12381G2KeyPair {
   }
 
   /**
+   * Constructs a BLS 12-381 key pair from options
+   * @param options [Optional] options for key pair
+   *
+   * @returns A BLS 12-381 key pair
+   */
+  static async from(options: KeyPairOptions): Promise<Bls12381G2KeyPair> {
+    return new Bls12381G2KeyPair(options);
+  }
+
+  /**
    * Returns a signer object for use with jsonld-signatures.
    *
    * @returns {{sign: Function}} A signer for the json-ld block.
