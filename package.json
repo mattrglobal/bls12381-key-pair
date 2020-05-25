@@ -1,6 +1,6 @@
 {
   "name": "@mattrglobal/bls12381-key-pair",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A library for using BLS 12-381 key pairs with BBS+ signatures",
   "homepage": "https://github.com/mattrglobal/bls12381-key-pair",
   "author": {
