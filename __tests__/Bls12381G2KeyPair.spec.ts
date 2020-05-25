@@ -133,7 +133,7 @@ describe("Bls12381G2KeyPair", () => {
     });
 
     expect(fingerprint).toEqual(
-      "zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+      "zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD"
     );
   });
 
@@ -143,7 +143,7 @@ describe("Bls12381G2KeyPair", () => {
     const fingerprint = myLdKey.fingerprint();
 
     expect(fingerprint).toEqual(
-      "zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+      "zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD"
     );
   });
 
@@ -151,7 +151,7 @@ describe("Bls12381G2KeyPair", () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
     const result = myLdKey.verifyFingerprint(
-      "zUC6FJ5FE226rpzLs67qmNMYmJd7LmxkXZhat7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
+      "zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD"
     );
 
     expect(result.valid).toBeTruthy();
@@ -237,11 +237,11 @@ describe("Bls12381G2KeyPair", () => {
     );
 
     expect(myLdKey.privateKeyBuffer).toEqual(
-      base58.decode("5o1vfbtkHtnqfitTw7HxiLRpq9xqjwKErS2HxgReb2DD")
+      base58.decode("7KbvkY9brt8gBBfyWSEYCuLj7FvjymepmszKubLhr3Xu")
     );
     expect(myLdKey.publicKeyBuffer).toEqual(
       base58.decode(
-        "28REUDHHFDkMuFwd6NzzpXb28ooRHBKhhHB2rFC8vytAe8n6T7ekQo6eWqH4TEy6jyDaLTYoehVxsE7ifeoDPrWg2Rkt6azFekgv1Mvc6BCNSqfQRgckEpk3DAeuXJmWWsM"
+        "mkQu8DwH1sQGgxoTT76zUHzrZxKqaHKdoLJymK3H6baf2vkpBfR4sMZLAN6QpegRyjbwGmmH69HEwH3oqXUjpGnDGY29AmexaryVZJe3WDcQm186WD8tVQhvBo8uuommeAg"
       )
     );
   });

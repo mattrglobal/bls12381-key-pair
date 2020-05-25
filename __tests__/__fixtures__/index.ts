@@ -15,11 +15,11 @@ import exampleBls12381KeyPair from "./exampleBls12381KeyPair.json";
 
 const exampleSingleMessage = "someData";
 const exampleSingleMessageSignature =
-  "BB941wFBFAR0VBaD/Skk3gx5PbxMc4y1IYN0KiAnLH542Orc1gTuxNnAbh0VU3umboXUv/PZgN95UiYg9SJsp8u+IpnCiPKsKnuK3mpSsBMABoc6TBEwQutvUwdHtaSBPFg7VpF8tBdpk1c9AEiXMw==";
+  "o6eLL+eFfvSdh+vyNCsyZxmVJTLe2DuqD93W6hG7M7se+9MdoyEdPRNiB6aM5XjVBaJQ6wSt41HTVcHTnq3aOCDAVlc27m70SJwVCUgbsqA9J/tBEqfZF7VEGs79765wIubvyed/WQR/wZGUlRSg/w==";
 
 const exampleMultiMessage = ["test", "value"];
 const exampleMultiMessageSignature =
-  "CWcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
+  "gTeYNYnogNM2En/YLq7pEtDDOi1PIlVtKBevXQjIMZtk1KdOtApAw2HUNV0eFG5mXhD28X0tmXbubLqwQb0K/lKxVZJvTS2MyuP1bRDnsyJB9tOE/AnpoNDWKnjjVu6tQNgG3YNQsJZhVgvHyUAo8A==";
 
 const badSignature =
   "AdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
@@ -27,11 +27,11 @@ const badSignatureBadLength =
   "aaaaAdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
 
 export {
-    exampleBls12381KeyPair,
-    exampleSingleMessage,
-    exampleSingleMessageSignature,
-    exampleMultiMessage,
-    exampleMultiMessageSignature,
-    badSignature,
-    badSignatureBadLength
+  exampleBls12381KeyPair,
+  exampleSingleMessage,
+  exampleSingleMessageSignature,
+  exampleMultiMessage,
+  exampleMultiMessageSignature,
+  badSignature,
+  badSignatureBadLength
 };
