@@ -1,3 +1,9 @@
+# [0.3.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.2.0...v0.3.0) (2020-05-25)
+
+### Features
+
+- update bbs dependency to latest ([#5](https://github.com/mattrglobal/bls12381-key-pair/issues/5)) ([03a6db8](https://github.com/mattrglobal/bls12381-key-pair/commit/03a6db802c97d08bd9e441a5300b82415976bde5))
+
 # 0.2.0 (2020-05-09)
 
 ### Features
