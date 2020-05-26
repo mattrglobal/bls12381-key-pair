@@ -2,6 +2,8 @@
 
 # bls12381-key-pair
 
+![npm-version](https://badgen.net/npm/v/@mattrglobal/bls12381-key-pair)
+![npm-unstable-version](https://badgen.net/npm/v/@mattrglobal/bls12381-key-pair/unstable)
 ![push-master](https://github.com/mattrglobal/bls12381-key-pair/workflows/push-master/badge.svg)
 ![push-release](https://github.com/mattrglobal/bls12381-key-pair/workflows/push-release/badge.svg)
 ![codecov](https://codecov.io/gh/mattrglobal/bls12381-key-pair/branch/master/graph/badge.svg)
