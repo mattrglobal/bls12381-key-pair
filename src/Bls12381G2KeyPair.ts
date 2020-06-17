@@ -14,6 +14,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import bs58 from "bs58";
 import {
+  DEFAULT_BLS12381_PUBLIC_KEY_LENGTH,
   generateBls12381KeyPair,
   blsVerify,
   blsSign
@@ -197,6 +198,74 @@ export class Bls12381G2KeyPair {
   }
 
   /**
+   * Constructs a BLS 12-381 key pair from a public key fingerprint
+   * @param fingerprint [Optional] public key fingerprint
+   *
+   * TODO this interface needs to be refactored, there should be no
+   * hard coded notion of DIDs at this layer
+   *
+   * @returns A BLS 12-381 key pair
+   */
+  static fromFingerprint({
+    id,
+    controller,
+    fingerprint
+  }: any): Bls12381G2KeyPair {
+    if (fingerprint.substr(0, 1) != MULTIBASE_ENCODED_BASE58_IDENTIFIER) {
+      throw new Error(
+        `Unsupported fingerprint type: expected first character to be \`z\` indicating base58 encoding, received \`${fingerprint.substr(
+          0,
+          1
+        )}\``
+      );
+    }
+
+    // parse of the multi-format public key removing the `z` that indicates base58 encoding
+    const buffer = bs58.decode(fingerprint.substr(1));
+
+    if (buffer.length !== DEFAULT_BLS12381_PUBLIC_KEY_LENGTH + 2) {
+      throw new Error(
+        `Unsupported public key length: expected \`${DEFAULT_BLS12381_PUBLIC_KEY_LENGTH}\` received \`${buffer.length -
+          2}\``
+      );
+    }
+
+    if (buffer[0] !== BLS12381G2_MULTICODEC_IDENTIFIER) {
+      throw new Error(
+        `Unsupported public key identifier: expected second character to be \`${BLS12381G2_MULTICODEC_IDENTIFIER}\` indicating BLS12381G2 key pair, received \`${buffer[0]}\``
+      );
+    }
+
+    if (buffer[1] !== VARIABLE_INTEGER_TRAILING_BYTE) {
+      throw new Error(
+        `Missing variable integer trailing byte: expected third character to be \`${VARIABLE_INTEGER_TRAILING_BYTE}\` indicating trailing integer, received \`${buffer[1]}\``
+      );
+    }
+
+    const publicKeyBase58 = bs58.encode(buffer.slice(2));
+
+    //Defaults the controller to a DID key based controller
+    if (!controller) {
+      controller = `did:key:${Bls12381G2KeyPair.fingerprintFromPublicKey({
+        publicKeyBase58
+      })}`;
+    }
+
+    //Defaults the id to the did key based fragment
+    if (!id) {
+      id = `#${Bls12381G2KeyPair.fingerprintFromPublicKey({
+        publicKeyBase58
+      })}`;
+    }
+
+    return new Bls12381G2KeyPair({
+      id,
+      controller,
+      publicKeyBase58
+    });
+  }
+
+  /**
    * Returns a signer object for use with jsonld-signatures.
    *
    * @returns {{sign: Function}} A signer for the json-ld block.
@@ -286,7 +355,12 @@ export class Bls12381G2KeyPair {
   verifyFingerprint(fingerprint: string): any {
     // fingerprint should have `z` prefix indicating
     // that it's multi-base encoded
-    if (!(typeof fingerprint === "string" && fingerprint[0] === "z")) {
+    if (
+      !(
+        typeof fingerprint === "string" &&
+        fingerprint[0] === MULTIBASE_ENCODED_BASE58_IDENTIFIER
+      )
+    ) {
       return {
         error: new Error("`fingerprint` must be a multibase encoded string."),
         valid: false
