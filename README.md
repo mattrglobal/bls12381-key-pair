@@ -9,7 +9,7 @@
 ![codecov](https://codecov.io/gh/mattrglobal/bls12381-key-pair/branch/master/graph/badge.svg)
 
 This library supports generating [BLS12-381](https://tools.ietf.org/html/draft-irtf-cfrg-pairing-friendly-curves-02#section-2.4) key pairs and supports the
-signing and verification of BBS+ signatures.
+signing and verification of [BBS+ signatures](https://github.com/mattrglobal/bbs-signatures-spec).
 
 ## Getting started
 
