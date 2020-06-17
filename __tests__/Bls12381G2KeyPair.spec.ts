@@ -33,7 +33,7 @@ const { sign } = key.signer();
 const { verify } = key.verifier();
 
 describe("Bls12381G2KeyPair", () => {
-  it("should load public private key from options correctly", async () => {
+  it("should load public private key from options", async () => {
     const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -75,7 +75,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.privateKey).toEqual(exampleBls12381KeyPair.privateKeyBase58);
   });
 
-  it("should load public key from options correctly", async () => {
+  it("should load public key from options", async () => {
     let keyOptions = { ...exampleBls12381KeyPair };
     delete keyOptions.privateKeyBase58;
 
@@ -96,7 +96,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
-  it("should load public key from options correctly using .from()", async () => {
+  it("should load public key from options using .from()", async () => {
     let keyOptions = { ...exampleBls12381KeyPair };
     delete keyOptions.privateKeyBase58;
 
@@ -115,6 +115,73 @@ describe("Bls12381G2KeyPair", () => {
 
     expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
     expect(myLdKey.privateKey).toBeUndefined();
+  });
+
+  it("should load public key from fingerprint", async () => {
+    let keyOptions = { ...exampleBls12381KeyPair };
+    delete keyOptions.privateKeyBase58;
+
+    const myLdKey = Bls12381G2KeyPair.fromFingerprint({
+      fingerprint: `zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD`
+    });
+
+    expect(myLdKey.id).toBe(
+      "#zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD"
+    );
+    expect(myLdKey.type).toBe("Bls12381G2Key2020");
+    expect(myLdKey.controller).toBe(
+      "did:key:zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD"
+    );
+
+    expect(myLdKey.privateKeyBuffer).toBeUndefined();
+    expect(myLdKey.publicKeyBuffer).toBeDefined();
+
+    expect(myLdKey.publicKeyBuffer.length).toBe(
+      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+    );
+
+    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.privateKey).toBeUndefined();
+  });
+
+  it("should throw error loading public key from fingerprint when it does not start with multibase", async () => {
+    expect(() =>
+      Bls12381G2KeyPair.fromFingerprint({
+        fingerprint: `aUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD`
+      })
+    ).toThrowError(
+      "Unsupported fingerprint type: expected first character to be `z` indicating base58 encoding, received `a`"
+    );
+  });
+
+  it("should throw error loading public key from fingerprint when it does not contain correct key identifier", async () => {
+    expect(() =>
+      Bls12381G2KeyPair.fromFingerprint({
+        fingerprint: `zxC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD`
+      })
+    ).toThrowError(
+      "Unsupported public key identifier: expected second character to be `235` indicating BLS12381G2 key pair, received `8`"
+    );
+  });
+
+  it("should throw error loading public key from fingerprint when it does not contain trailing byte integer", async () => {
+    expect(() =>
+      Bls12381G2KeyPair.fromFingerprint({
+        fingerprint: `zUC93gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD`
+      })
+    ).toThrowError(
+      "Missing variable integer trailing byte: expected third character to be `1` indicating trailing integer, received `2`"
+    );
+  });
+
+  it("should throw error loading public key from fingerprint when length is incorrect", async () => {
+    expect(() =>
+      Bls12381G2KeyPair.fromFingerprint({
+        fingerprint: `zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WDaaaaa`
+      })
+    ).toThrowError(
+      "Unsupported public key length: expected `96` received `100`"
+    );
   });
 
   it("should add encoded public key", async () => {
