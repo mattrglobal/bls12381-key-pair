@@ -25,5 +25,5 @@ export interface KeyPairSigner {
  * Key pair signer options
  */
 export interface KeyPairSignerOptions {
-  readonly data: string | string[];
+  readonly data: Uint8Array | Uint8Array[];
 }

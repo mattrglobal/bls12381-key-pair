@@ -13,11 +13,14 @@
 
 import exampleBls12381KeyPair from "./exampleBls12381KeyPair.json";
 
-const exampleSingleMessage = "someData";
+const exampleSingleMessage = new Uint8Array(Buffer.from("someData"));
 const exampleSingleMessageSignature =
   "o6eLL+eFfvSdh+vyNCsyZxmVJTLe2DuqD93W6hG7M7se+9MdoyEdPRNiB6aM5XjVBaJQ6wSt41HTVcHTnq3aOCDAVlc27m70SJwVCUgbsqA9J/tBEqfZF7VEGs79765wIubvyed/WQR/wZGUlRSg/w==";
 
-const exampleMultiMessage = ["test", "value"];
+const exampleMultiMessage = [
+  new Uint8Array(Buffer.from("test")),
+  new Uint8Array(Buffer.from("value"))
+];
 const exampleMultiMessageSignature =
   "gTeYNYnogNM2En/YLq7pEtDDOi1PIlVtKBevXQjIMZtk1KdOtApAw2HUNV0eFG5mXhD28X0tmXbubLqwQb0K/lKxVZJvTS2MyuP1bRDnsyJB9tOE/AnpoNDWKnjjVu6tQNgG3YNQsJZhVgvHyUAo8A==";
 

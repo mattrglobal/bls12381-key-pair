@@ -24,8 +24,8 @@ import {
 import { Bls12381G2KeyPair } from "../src";
 import {
   DEFAULT_BLS12381_PRIVATE_KEY_LENGTH,
-  DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
-} from "@mattrglobal/node-bbs-signatures";
+  DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
+} from "@mattrglobal/bbs-signatures";
 import base58 from "bs58";
 
 const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
@@ -47,7 +47,7 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_PRIVATE_KEY_LENGTH
     );
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
     expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
@@ -68,7 +68,7 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_PRIVATE_KEY_LENGTH
     );
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
     expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
@@ -89,7 +89,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.publicKeyBuffer).toBeDefined();
 
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
     expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
@@ -110,7 +110,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.publicKeyBuffer).toBeDefined();
 
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
     expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
@@ -137,7 +137,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(myLdKey.publicKeyBuffer).toBeDefined();
 
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
     expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
@@ -274,7 +274,7 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_PRIVATE_KEY_LENGTH
     );
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
   });
 
@@ -300,15 +300,15 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_PRIVATE_KEY_LENGTH
     );
     expect(myLdKey.publicKeyBuffer.length).toBe(
-      DEFAULT_BLS12381_PUBLIC_KEY_LENGTH
+      DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
     expect(myLdKey.privateKeyBuffer).toEqual(
-      base58.decode("7KbvkY9brt8gBBfyWSEYCuLj7FvjymepmszKubLhr3Xu")
+      base58.decode("6DLV2ijYvG7Dh45sP7V9GfprG7sB26GYaJnSuFQX6cD1")
     );
     expect(myLdKey.publicKeyBuffer).toEqual(
       base58.decode(
-        "mkQu8DwH1sQGgxoTT76zUHzrZxKqaHKdoLJymK3H6baf2vkpBfR4sMZLAN6QpegRyjbwGmmH69HEwH3oqXUjpGnDGY29AmexaryVZJe3WDcQm186WD8tVQhvBo8uuommeAg"
+        "22ChK6FX33MgZtQ9yzTMHTYin7X3yfwHstNvZQ4ScJsodX7H75h9t3VCZhE6EaSpAeUeWrfy9PPPcMzWKQ7zsxXG7tigKqoxGgtyeAjpaJSTcNSXAj2YKRwHYQ1dfLv6ZuHq"
       )
     );
   });
