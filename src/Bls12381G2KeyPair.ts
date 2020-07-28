@@ -18,7 +18,7 @@ import {
   generateBls12381KeyPair,
   blsVerify,
   blsSign
-} from "@mattrglobal/node-bbs-signatures";
+} from "@mattrglobal/bbs-signatures";
 import {
   KeyPairOptions,
   KeyPairSigner,

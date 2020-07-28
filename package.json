@@ -29,7 +29,7 @@
   ],
   "private": false,
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS='--max-old-space-size=8192' jest",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",
@@ -40,6 +40,9 @@
     "publish:release": "./scripts/publish.sh",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
+  },
+  "optionalDependencies": {
+    "@mattrglobal/node-bbs-signatures": "0.9.0"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
@@ -65,7 +68,7 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/node-bbs-signatures": "0.8.0",
+    "@mattrglobal/bbs-signatures": "0.3.0",
     "bs58": "4.0.1"
   },
   "husky": {
