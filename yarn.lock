@@ -594,17 +594,17 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@mattrglobal/bbs-signatures@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.3.0.tgz#3f39c5a5b495cf8e004efa8222f3377ec58eb337"
-  integrity sha512-ymTzzVNLRD1NZl6G0Yrkh2dr+17EPzDbdP4qiVyvrS3r4vAJnbXPB3gLYm74SMBmYXsMpZCb5nPWzkMtdeApLQ==
+"@mattrglobal/bbs-signatures@0.3.1-unstable.92238cf":
+  version "0.3.1-unstable.92238cf"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.3.1-unstable.92238cf.tgz#ca9251af45211585a1ab1069c80e4893ed96d848"
+  integrity sha512-9embdzQ39+W41c2a+ocEwAQjN9pnYMIYWq70F6vQqhMforgqLDJyFdyTyuvqyvnpG8WXH4SnbzLRlu1MYghVOQ==
   optionalDependencies:
-    "@mattrglobal/node-bbs-signatures" "0.9.0"
+    "@mattrglobal/node-bbs-signatures" "0.9.1-unstable.4cb57b7"
 
-"@mattrglobal/node-bbs-signatures@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.9.0.tgz#e581988babfa06ab50f2ba4e068877420e84bf11"
-  integrity sha512-FGy5kucFie3g6sTGFTjp6e91VicDncRFIbpvgIqGDyySJZtgPCL1es6yhEPrWfTnbX3zcXQfdm1OWhFlBLWP9w==
+"@mattrglobal/node-bbs-signatures@0.9.1-unstable.4cb57b7":
+  version "0.9.1-unstable.4cb57b7"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/node-bbs-signatures/-/node-bbs-signatures-0.9.1-unstable.4cb57b7.tgz#b210dc4871de7fa813b7b9755dc7bde9ef29091f"
+  integrity sha512-9EpQ0u0hXeD5RcYxs7kgHXBZAsKeWBQFLSR5B7OLvO46OnuLXfcjKwDG04JypJuMm6bjFz2Z/4qUeZpysAgR6w==
   dependencies:
     neon-cli "0.4.0"
     node-pre-gyp "0.14.0"

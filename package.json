@@ -41,9 +41,6 @@
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "version:release": "yarn version --minor --message \"chore(release): publish [skip ci]\""
   },
-  "optionalDependencies": {
-    "@mattrglobal/node-bbs-signatures": "0.9.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
@@ -68,7 +65,7 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/bbs-signatures": "0.3.0",
+    "@mattrglobal/bbs-signatures": "0.3.1-unstable.92238cf",
     "bs58": "4.0.1"
   },
   "husky": {

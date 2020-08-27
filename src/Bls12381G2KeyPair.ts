@@ -14,8 +14,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import bs58 from "bs58";
 import {
-  DEFAULT_BLS12381_PUBLIC_KEY_LENGTH,
-  generateBls12381KeyPair,
+  DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH,
+  generateBls12381G2KeyPair,
   blsVerify,
   blsSign
 } from "@mattrglobal/bbs-signatures";
@@ -66,8 +66,8 @@ const signerFactory = (key: Bls12381G2KeyPair): KeyPairSigner => {
   }
   return {
     async sign({ data }): Promise<string> {
-      //TODO assert data runtime string | string[]
-      if (typeof data === "string") {
+      //TODO assert data runtime Uint8Array | Uint8Array[]
+      if (data instanceof Uint8Array) {
         return Buffer.from(
           blsSign({
             messages: [data],
@@ -112,8 +112,8 @@ const verifierFactory = (key: Bls12381G2KeyPair): KeyPairVerifier => {
 
   return {
     async verify({ data, signature }): Promise<boolean> {
-      //TODO assert data
-      if (typeof data === "string") {
+      //TODO assert data instance of Uint8Array | Uint8Array[]
+      if (data instanceof Uint8Array) {
         return blsVerify({
           messages: [data],
           publicKey: new Uint8Array(key.publicKeyBuffer),
@@ -178,8 +178,8 @@ export class Bls12381G2KeyPair {
     options?: GenerateKeyPairOptions
   ): Promise<Bls12381G2KeyPair> {
     const keyPair = options?.seed
-      ? generateBls12381KeyPair(options.seed)
-      : generateBls12381KeyPair();
+      ? generateBls12381G2KeyPair(options.seed)
+      : generateBls12381G2KeyPair();
     return new Bls12381G2KeyPair({
       ...options,
       privateKeyBase58: bs58.encode(keyPair.secretKey as Uint8Array),
@@ -223,9 +223,9 @@ export class Bls12381G2KeyPair {
     // parse of the multi-format public key removing the `z` that indicates base58 encoding
     const buffer = bs58.decode(fingerprint.substr(1));
 
-    if (buffer.length !== DEFAULT_BLS12381_PUBLIC_KEY_LENGTH + 2) {
+    if (buffer.length !== DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH + 2) {
       throw new Error(
-        `Unsupported public key length: expected \`${DEFAULT_BLS12381_PUBLIC_KEY_LENGTH}\` received \`${buffer.length -
+        `Unsupported public key length: expected \`${DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH}\` received \`${buffer.length -
           2}\``
       );
     }
