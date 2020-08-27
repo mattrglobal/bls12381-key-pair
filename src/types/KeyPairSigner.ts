@@ -18,7 +18,7 @@ export interface KeyPairSigner {
   /**
    * Signer function
    */
-  readonly sign: (options: KeyPairSignerOptions) => Promise<string>;
+  readonly sign: (options: KeyPairSignerOptions) => Promise<Uint8Array>;
 }
 
 /**

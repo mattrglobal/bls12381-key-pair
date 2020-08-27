@@ -59,34 +59,30 @@ const BLS12381G2_MULTICODEC_IDENTIFIER = 0xeb;
 const signerFactory = (key: Bls12381G2KeyPair): KeyPairSigner => {
   if (!key.privateKeyBuffer) {
     return {
-      async sign(): Promise<string> {
+      async sign(): Promise<Uint8Array> {
         throw new Error("No private key to sign with.");
       }
     };
   }
   return {
-    async sign({ data }): Promise<string> {
+    async sign({ data }): Promise<Uint8Array> {
       //TODO assert data runtime Uint8Array | Uint8Array[]
       if (data instanceof Uint8Array) {
-        return Buffer.from(
-          blsSign({
-            messages: [data],
-            keyPair: {
-              secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
-              publicKey: new Uint8Array(key.publicKeyBuffer)
-            }
-          })
-        ).toString("base64");
-      }
-      return Buffer.from(
-        blsSign({
-          messages: data,
+        return blsSign({
+          messages: [data],
           keyPair: {
             secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
             publicKey: new Uint8Array(key.publicKeyBuffer)
           }
-        })
-      ).toString("base64");
+        });
+      }
+      return blsSign({
+        messages: data,
+        keyPair: {
+          secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
+          publicKey: new Uint8Array(key.publicKeyBuffer)
+        }
+      });
     }
   };
 };
@@ -117,13 +113,13 @@ const verifierFactory = (key: Bls12381G2KeyPair): KeyPairVerifier => {
         return blsVerify({
           messages: [data],
           publicKey: new Uint8Array(key.publicKeyBuffer),
-          signature: new Uint8Array(Buffer.from(signature, "base64"))
+          signature
         }).verified;
       }
       return blsVerify({
         messages: data,
         publicKey: new Uint8Array(key.publicKeyBuffer),
-        signature: new Uint8Array(Buffer.from(signature, "base64"))
+        signature
       }).verified;
     }
   };

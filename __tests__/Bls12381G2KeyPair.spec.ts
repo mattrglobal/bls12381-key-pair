@@ -341,7 +341,9 @@ describe("Bls12381G2KeyPair", () => {
     expect(
       await verify({
         data: exampleSingleMessage,
-        signature: exampleSingleMessageSignature
+        signature: new Uint8Array(
+          Buffer.from(exampleSingleMessageSignature, "base64")
+        )
       })
     ).toBe(true);
   });
@@ -351,7 +353,9 @@ describe("Bls12381G2KeyPair", () => {
     expect(
       await verify({
         data: exampleMultiMessage,
-        signature: exampleMultiMessageSignature
+        signature: new Uint8Array(
+          Buffer.from(exampleMultiMessageSignature, "base64")
+        )
       })
     ).toBe(true);
   });
@@ -359,7 +363,10 @@ describe("Bls12381G2KeyPair", () => {
   it("should not verify bad signature of correct length", async () => {
     expect(typeof verify).toBe("function");
     expect(
-      await verify({ data: exampleSingleMessage, signature: badSignature })
+      await verify({
+        data: exampleSingleMessage,
+        signature: new Uint8Array(Buffer.from(badSignature, "base64"))
+      })
     ).toBe(false);
   });
 
@@ -368,7 +375,7 @@ describe("Bls12381G2KeyPair", () => {
     expect(
       await verify({
         data: exampleSingleMessage,
-        signature: badSignatureBadLength
+        signature: new Uint8Array(Buffer.from(badSignatureBadLength, "base64"))
       })
     ).toBe(false);
   });
