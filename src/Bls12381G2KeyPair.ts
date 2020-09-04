@@ -12,6 +12,7 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { base64url } from "rfc4648";
 import bs58 from "bs58";
 import {
   DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH,
@@ -20,11 +21,19 @@ import {
   blsSign
 } from "@mattrglobal/bbs-signatures";
 import {
+  JsonWebKey,
   KeyPairOptions,
   KeyPairSigner,
   KeyPairVerifier,
-  GenerateKeyPairOptions
+  GenerateKeyPairOptions,
+  JwkKeyPairOptions,
+  BlsCurveName
 } from "./types";
+import {
+  assertBls12381G2PrivateJwk,
+  assertBls12381G2PublicJwk
+} from "./validators";
+import { convertBase64urlToBase58 } from "./utils";
 
 /**
  * z represents the multibase encoding scheme of base58 encoding
@@ -194,6 +203,37 @@ export class Bls12381G2KeyPair {
   }
 
   /**
+   * Constructs a BLS 12-381 key pair from options
+   * @param options [Optional] options for key pair
+   *
+   * @returns A BLS 12-381 key pair
+   */
+  static async fromJwk(options: JwkKeyPairOptions): Promise<Bls12381G2KeyPair> {
+    const { id, controller, publicKeyJwk, privateKeyJwk } = options;
+    if (
+      typeof privateKeyJwk !== "undefined" &&
+      assertBls12381G2PrivateJwk(privateKeyJwk)
+    ) {
+      return new Bls12381G2KeyPair({
+        id,
+        controller,
+        publicKeyBase58: convertBase64urlToBase58(privateKeyJwk.x as string),
+        privateKeyBase58: convertBase64urlToBase58(privateKeyJwk.d as string)
+      });
+    }
+
+    if (assertBls12381G2PublicJwk(publicKeyJwk)) {
+      return new Bls12381G2KeyPair({
+        id,
+        controller,
+        publicKeyBase58: convertBase64urlToBase58(publicKeyJwk.x as string)
+      });
+    }
+
+    throw Error("The JWK provided is not a valid");
+  }
+
+  /**
    * Constructs a BLS 12-381 key pair from a public key fingerprint
    * @param fingerprint [Optional] public key fingerprint
    *
@@ -289,6 +329,20 @@ export class Bls12381G2KeyPair {
   }
 
   /**
+   * Returns the JWK structured public key.
+   *
+   * @returns The JWK public key.
+   */
+  get publicKeyJwk(): JsonWebKey {
+    return {
+      kid: this.id,
+      kty: "EC",
+      crv: BlsCurveName.G2,
+      x: base64url.stringify(this.publicKeyBuffer, { pad: false })
+    };
+  }
+
+  /**
    * Returns the base58 encoded private key.
    *
    * @returns The base58 encoded private key.
@@ -296,6 +350,24 @@ export class Bls12381G2KeyPair {
   get privateKey(): string | undefined {
     if (this.privateKeyBuffer) {
       return bs58.encode(this.privateKeyBuffer);
+    }
+    return undefined;
+  }
+
+  /**
+   * Returns the JWK formatted private key.
+   *
+   * @returns The JWK formatted private key.
+   */
+  get privateKeyJwk(): JsonWebKey | undefined {
+    if (this.privateKeyBuffer) {
+      return {
+        kid: this.id,
+        kty: "EC",
+        crv: BlsCurveName.G2,
+        x: base64url.stringify(this.publicKeyBuffer, { pad: false }),
+        d: base64url.stringify(this.privateKeyBuffer, { pad: false })
+      };
     }
     return undefined;
   }

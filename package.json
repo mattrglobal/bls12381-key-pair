@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "@mattrglobal/bbs-signatures": "0.4.0",
+    "rfc4648": "1.4.0",
     "bs58": "4.0.1"
   },
   "husky": {

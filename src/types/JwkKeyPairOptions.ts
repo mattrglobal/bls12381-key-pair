@@ -11,10 +11,26 @@
  * limitations under the License.
  */
 
-export { BlsCurveName } from "./BlsCurveName";
-export { GenerateKeyPairOptions } from "./GenerateKeyPairOptions";
-export { JsonWebKey } from "./JsonWebKey";
-export { JwkKeyPairOptions } from "./JwkKeyPairOptions";
-export { KeyPairOptions } from "./KeyPairOptions";
-export { KeyPairSigner } from "./KeyPairSigner";
-export { KeyPairVerifier } from "./KeyPairVerifier";
+import { JsonWebKey } from "./JsonWebKey";
+
+/**
+ * Options for constructing a key pair
+ */
+export interface JwkKeyPairOptions {
+  /**
+   * The key id
+   */
+  readonly id?: string;
+  /**
+   * The key controller
+   */
+  readonly controller?: string;
+  /**
+   * Base58 encoding of the private key
+   */
+  readonly privateKeyJwk?: JsonWebKey;
+  /**
+   * Base58 encoding of the public key
+   */
+  readonly publicKeyJwk: JsonWebKey;
+}
