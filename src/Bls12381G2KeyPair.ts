@@ -206,7 +206,7 @@ export class Bls12381G2KeyPair {
    * Constructs a BLS 12-381 key pair from options
    * @param options [Optional] options for key pair
    *
-   * @returns A BLS 12-381 key pair
+   * @returns A BLS 12-381 G2 key pair
    */
   static async fromJwk(options: JwkKeyPairOptions): Promise<Bls12381G2KeyPair> {
     const { id, controller, publicKeyJwk, privateKeyJwk } = options;
