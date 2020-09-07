@@ -11,10 +11,9 @@
  * limitations under the License.
  */
 
-export { BlsCurveName } from "./BlsCurveName";
-export { GenerateKeyPairOptions } from "./GenerateKeyPairOptions";
-export { JsonWebKey } from "./JsonWebKey";
-export { JwkKeyPairOptions } from "./JwkKeyPairOptions";
-export { KeyPairOptions } from "./KeyPairOptions";
-export { KeyPairSigner } from "./KeyPairSigner";
-export { KeyPairVerifier } from "./KeyPairVerifier";
+import { base64url } from "rfc4648";
+import bs58 from "bs58";
+
+export const convertBase64urlToBase58 = (value: string): string => {
+  return bs58.encode(base64url.parse(value, { loose: true }));
+};

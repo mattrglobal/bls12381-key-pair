@@ -12,6 +12,7 @@
  */
 
 import exampleBls12381KeyPair from "./exampleBls12381KeyPair.json";
+import exampleBls12381JwkKeyPair from "./exampleBls12381JwkKeyPair.json";
 
 const exampleSingleMessage = new Uint8Array(Buffer.from("someData"));
 const exampleSingleMessageSignature =
@@ -30,6 +31,7 @@ const badSignatureBadLength =
   "aaaaAdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
 
 export {
+  exampleBls12381JwkKeyPair,
   exampleBls12381KeyPair,
   exampleSingleMessage,
   exampleSingleMessageSignature,

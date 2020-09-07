@@ -11,10 +11,7 @@
  * limitations under the License.
  */
 
-export { BlsCurveName } from "./BlsCurveName";
-export { GenerateKeyPairOptions } from "./GenerateKeyPairOptions";
-export { JsonWebKey } from "./JsonWebKey";
-export { JwkKeyPairOptions } from "./JwkKeyPairOptions";
-export { KeyPairOptions } from "./KeyPairOptions";
-export { KeyPairSigner } from "./KeyPairSigner";
-export { KeyPairVerifier } from "./KeyPairVerifier";
+export enum BlsCurveName {
+  G1 = "BLS12381_G1",
+  G2 = "BLS12381_G2"
+}

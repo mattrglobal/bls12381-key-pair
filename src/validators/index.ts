@@ -11,10 +11,11 @@
  * limitations under the License.
  */
 
-export { BlsCurveName } from "./BlsCurveName";
-export { GenerateKeyPairOptions } from "./GenerateKeyPairOptions";
-export { JsonWebKey } from "./JsonWebKey";
-export { JwkKeyPairOptions } from "./JwkKeyPairOptions";
-export { KeyPairOptions } from "./KeyPairOptions";
-export { KeyPairSigner } from "./KeyPairSigner";
-export { KeyPairVerifier } from "./KeyPairVerifier";
+export {
+  assertPrivateBlsJwk as assertPrivateJwk,
+  assertPublicBlsJwk as assertPublicJwk
+} from "./JsonWebKey";
+export {
+  assertBls12381G2PrivateJwk,
+  assertBls12381G2PublicJwk
+} from "./Bls12381G2Jwk";
