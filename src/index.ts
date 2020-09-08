@@ -11,5 +11,6 @@
  * limitations under the License.
  */
 
+export { Bls12381G1KeyPair } from "./Bls12381G1KeyPair";
 export { Bls12381G2KeyPair } from "./Bls12381G2KeyPair";
 export { GenerateKeyPairOptions, KeyPairOptions } from "./types";

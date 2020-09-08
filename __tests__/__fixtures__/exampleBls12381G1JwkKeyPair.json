@@ -1,0 +1,17 @@
+{
+  "id": "did:example:489398593#test",
+  "controller": "did:example:489398593",
+  "publicKeyJwk": {
+    "kid": "did:example:489398593#test",
+    "kty": "EC",
+    "crv": "BLS12381_G1",
+    "x": "tCgCNuUYQotPEsrljWi-lIRIPpzhqsnJV1NPnE7je6glUb-FJm9IYkuv2hbHw22i"
+  },
+  "privateKeyJwk": {
+    "kid": "did:example:489398593#test",
+    "kty": "EC",
+    "crv": "BLS12381_G1",
+    "x": "tCgCNuUYQotPEsrljWi-lIRIPpzhqsnJV1NPnE7je6glUb-FJm9IYkuv2hbHw22i",
+    "d": "TXNvJBBG3h23H5hFJcnRZmYd_j1TqpwtJOllYGU3yyw"
+  }
+}
