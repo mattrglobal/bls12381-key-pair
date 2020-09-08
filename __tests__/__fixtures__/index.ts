@@ -11,18 +11,18 @@
  * limitations under the License.
  */
 
-import exampleBls12381KeyPair from "./exampleBls12381KeyPair.json";
-import exampleBls12381JwkKeyPair from "./exampleBls12381JwkKeyPair.json";
+import exampleBls12381G2JwkKeyPair from "./exampleBls12381G2JwkKeyPair.json";
+import exampleBls12381G2KeyPair from "./exampleBls12381G2KeyPair.json";
 
 const exampleSingleMessage = new Uint8Array(Buffer.from("someData"));
-const exampleSingleMessageSignature =
+const exampleSingleMessageG2KeySignature =
   "o6eLL+eFfvSdh+vyNCsyZxmVJTLe2DuqD93W6hG7M7se+9MdoyEdPRNiB6aM5XjVBaJQ6wSt41HTVcHTnq3aOCDAVlc27m70SJwVCUgbsqA9J/tBEqfZF7VEGs79765wIubvyed/WQR/wZGUlRSg/w==";
 
 const exampleMultiMessage = [
   new Uint8Array(Buffer.from("test")),
   new Uint8Array(Buffer.from("value"))
 ];
-const exampleMultiMessageSignature =
+const exampleMultiMessageG2KeySignature =
   "gTeYNYnogNM2En/YLq7pEtDDOi1PIlVtKBevXQjIMZtk1KdOtApAw2HUNV0eFG5mXhD28X0tmXbubLqwQb0K/lKxVZJvTS2MyuP1bRDnsyJB9tOE/AnpoNDWKnjjVu6tQNgG3YNQsJZhVgvHyUAo8A==";
 
 const badSignature =
@@ -31,12 +31,12 @@ const badSignatureBadLength =
   "aaaaAdcLcdMzvXU6pNiQHv/9/Y5QzEQpLMAfducfqOTdt/Jc6alMUGHn972ZK9aAhJTxLYGRtnvBnsQPBPgZbW+COymHfuR9jcZhoQlnfXXminowFrWHez1H0Jp4iGkHU+OlXeePg93jQW737gJs3cv8Cg==";
 
 export {
-  exampleBls12381JwkKeyPair,
-  exampleBls12381KeyPair,
+  exampleBls12381G2JwkKeyPair,
+  exampleBls12381G2KeyPair,
   exampleSingleMessage,
-  exampleSingleMessageSignature,
+  exampleSingleMessageG2KeySignature,
   exampleMultiMessage,
-  exampleMultiMessageSignature,
+  exampleMultiMessageG2KeySignature,
   badSignature,
   badSignatureBadLength
 };

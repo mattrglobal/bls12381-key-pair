@@ -163,7 +163,36 @@ export class Bls12381G2KeyPair {
    * Default constructor.
    */
   constructor(options: KeyPairOptions) {
-    //TODO need some assert statements here
+    /**
+     * The provided publicKey needs to be 384 bits / 5.85 = 65.6
+     * which means the base58 encoded publicKey can be either 65 or 66 chars
+     * 5.85 = log base 2 (58) which is equivalent to the number of bits
+     * encoded per character of a base58 encoded string.
+     *
+     */
+    if (
+      options.publicKeyBase58.length !== 131 &&
+      options.publicKeyBase58.length !== 132
+    ) {
+      throw new Error(
+        `The size of the public key is incorrect. Expected 131 or 132 chars got: ${options.publicKeyBase58.length}`
+      );
+    }
+
+    /**
+     * Validates the size of the private key if one is included
+     * This is done by 256 bits / 5.85 = 43.7 which means
+     * the base58 encoded privateKey can be either 43 or 44 chars
+     */
+    if (
+      typeof options.privateKeyBase58 !== "undefined" &&
+      options.privateKeyBase58.length !== 43 &&
+      options.privateKeyBase58.length !== 44
+    ) {
+      throw new Error(
+        `The size of the private key is incorrect. Expected 65 or 66 chars got: ${options.privateKeyBase58.length}`
+      );
+    }
     this.id = options.id;
     this.controller = options.controller;
     this.privateKeyBuffer = options.privateKeyBase58
@@ -212,6 +241,11 @@ export class Bls12381G2KeyPair {
     const { id, controller, publicKeyJwk, privateKeyJwk } = options;
     if (
       typeof privateKeyJwk !== "undefined" &&
+      /**
+       * The type casting is verified through the use of this assert function
+       * However because the returned interface leaves the properties as optional
+       * they need to be cast to pass to the convert function.
+       **/
       assertBls12381G2PrivateJwk(privateKeyJwk)
     ) {
       return new Bls12381G2KeyPair({

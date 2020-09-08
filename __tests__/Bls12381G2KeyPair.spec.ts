@@ -12,12 +12,12 @@
  */
 
 import {
-  exampleBls12381JwkKeyPair,
-  exampleBls12381KeyPair,
+  exampleBls12381G2JwkKeyPair,
+  exampleBls12381G2KeyPair,
   exampleMultiMessage,
-  exampleMultiMessageSignature,
+  exampleMultiMessageG2KeySignature,
   exampleSingleMessage,
-  exampleSingleMessageSignature,
+  exampleSingleMessageG2KeySignature,
   badSignature,
   badSignatureBadLength
 } from "./__fixtures__";
@@ -29,13 +29,13 @@ import {
 } from "@mattrglobal/bbs-signatures";
 import base58 from "bs58";
 
-const key = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+const key = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 const { sign } = key.signer();
 const { verify } = key.verifier();
 
 describe("Bls12381G2KeyPair", () => {
   it("should load public private key from options", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
     expect(myLdKey.type).toBe("Bls12381G2Key2020");
@@ -51,12 +51,14 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
-    expect(myLdKey.privateKey).toEqual(exampleBls12381KeyPair.privateKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
+    expect(myLdKey.privateKey).toEqual(
+      exampleBls12381G2KeyPair.privateKeyBase58
+    );
   });
 
   it("should load public private key from options using .from()", async () => {
-    const myLdKey = await Bls12381G2KeyPair.from(exampleBls12381KeyPair);
+    const myLdKey = await Bls12381G2KeyPair.from(exampleBls12381G2KeyPair);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
     expect(myLdKey.type).toBe("Bls12381G2Key2020");
@@ -72,12 +74,16 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
-    expect(myLdKey.privateKey).toEqual(exampleBls12381KeyPair.privateKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
+    expect(myLdKey.privateKey).toEqual(
+      exampleBls12381G2KeyPair.privateKeyBase58
+    );
   });
 
   it("should load public private key from options using .fromJwk()", async () => {
-    const myLdKey = await Bls12381G2KeyPair.fromJwk(exampleBls12381JwkKeyPair);
+    const myLdKey = await Bls12381G2KeyPair.fromJwk(
+      exampleBls12381G2JwkKeyPair
+    );
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
     expect(myLdKey.type).toBe("Bls12381G2Key2020");
@@ -93,12 +99,14 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
-    expect(myLdKey.privateKey).toEqual(exampleBls12381KeyPair.privateKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
+    expect(myLdKey.privateKey).toEqual(
+      exampleBls12381G2KeyPair.privateKeyBase58
+    );
   });
 
   it("should load public key from options", async () => {
-    let keyOptions = { ...exampleBls12381KeyPair };
+    let keyOptions = { ...exampleBls12381G2KeyPair };
     delete keyOptions.privateKeyBase58;
 
     const myLdKey = new Bls12381G2KeyPair(keyOptions);
@@ -114,12 +122,12 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
   it("should load public key from options using .from()", async () => {
-    let keyOptions = { ...exampleBls12381KeyPair };
+    let keyOptions = { ...exampleBls12381G2KeyPair };
     delete keyOptions.privateKeyBase58;
 
     const myLdKey = await Bls12381G2KeyPair.from(keyOptions);
@@ -135,12 +143,12 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
   it("should load public key from options using .fromJwk()", async () => {
-    let keyOptions = { ...exampleBls12381JwkKeyPair };
+    let keyOptions = { ...exampleBls12381G2JwkKeyPair };
     delete keyOptions.privateKeyJwk;
 
     const myLdKey = await Bls12381G2KeyPair.fromJwk(keyOptions);
@@ -156,12 +164,12 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
   it("should throw an error when no JWK from options using .fromJwk()", async () => {
-    let keyOptions = { ...exampleBls12381JwkKeyPair };
+    let keyOptions = { ...exampleBls12381G2JwkKeyPair };
     delete keyOptions.privateKeyJwk;
     delete keyOptions.publicKeyJwk;
     await expect(Bls12381G2KeyPair.fromJwk(keyOptions)).rejects.toThrow(
@@ -170,7 +178,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should load public key from fingerprint", async () => {
-    let keyOptions = { ...exampleBls12381KeyPair };
+    let keyOptions = { ...exampleBls12381G2KeyPair };
     delete keyOptions.privateKeyBase58;
 
     const myLdKey = Bls12381G2KeyPair.fromFingerprint({
@@ -192,7 +200,7 @@ describe("Bls12381G2KeyPair", () => {
       DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
     );
 
-    expect(myLdKey.publicKey).toEqual(exampleBls12381KeyPair.publicKeyBase58);
+    expect(myLdKey.publicKey).toEqual(exampleBls12381G2KeyPair.publicKeyBase58);
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
@@ -237,7 +245,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should add encoded public key", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const result = myLdKey.addEncodedPublicKey({});
 
@@ -245,35 +253,35 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should return a jwk public key", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
     expect(myLdKey.publicKeyJwk).toEqual(
-      exampleBls12381JwkKeyPair.publicKeyJwk
+      exampleBls12381G2JwkKeyPair.publicKeyJwk
     );
   });
 
   it("should return a jwk private key", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
     expect(myLdKey.privateKeyJwk).toEqual(
-      exampleBls12381JwkKeyPair.privateKeyJwk
+      exampleBls12381G2JwkKeyPair.privateKeyJwk
     );
   });
 
   it("should return undefined for privateKeyJwk when no privateKeyBuffer exists", async () => {
-    let keyOptions = { ...exampleBls12381JwkKeyPair };
+    let keyOptions = { ...exampleBls12381G2JwkKeyPair };
     delete keyOptions.privateKeyJwk;
     const myLdKey = await Bls12381G2KeyPair.fromJwk(keyOptions);
     expect(myLdKey.privateKeyJwk).toBeUndefined();
   });
 
   it("should return undefined for privateKey when no privateKeyBuffer exists", async () => {
-    let keyOptions = { ...exampleBls12381KeyPair };
+    let keyOptions = { ...exampleBls12381G2KeyPair };
     delete keyOptions.privateKeyBase58;
     const myLdKey = await Bls12381G2KeyPair.from(keyOptions);
     expect(myLdKey.privateKey).toBeUndefined();
   });
 
   it("should create correct public key fingerprint", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const fingerprint = Bls12381G2KeyPair.fingerprintFromPublicKey({
       publicKeyBase58: myLdKey.publicKey
@@ -285,7 +293,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should create correct public key fingerprint from key", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const fingerprint = myLdKey.fingerprint();
 
@@ -295,7 +303,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should verify fingerprint", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const result = myLdKey.verifyFingerprint(
       "zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD"
@@ -305,7 +313,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should throw error when fingerprint does not start with multibase", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const result = myLdKey.verifyFingerprint("aUC6FJ5FE226r");
 
@@ -316,7 +324,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should throw error when fingerprint does not match", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const result = myLdKey.verifyFingerprint(
       "zUC6FJ5FE226r7W1P1nsWdx8gnRQJhsAFZLooRZnsSwpUdgd8p5gVR4h2u7U5dFubNrBexHM6yipZP4SD2nnn5hXqto5cJ8fCknxAchK9LDmquE"
@@ -329,7 +337,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should throw error when fingerprint not valid base58", async () => {
-    const myLdKey = new Bls12381G2KeyPair(exampleBls12381KeyPair);
+    const myLdKey = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 
     const result = myLdKey.verifyFingerprint("z------");
 
@@ -394,7 +402,7 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should throw error on sign when no private key", async () => {
-    let keyOptions = exampleBls12381KeyPair;
+    let keyOptions = exampleBls12381G2KeyPair;
     delete keyOptions.privateKeyBase58;
     const badKey = new Bls12381G2KeyPair(keyOptions);
     const { sign } = badKey.signer();
@@ -422,7 +430,7 @@ describe("Bls12381G2KeyPair", () => {
       await verify({
         data: exampleSingleMessage,
         signature: new Uint8Array(
-          Buffer.from(exampleSingleMessageSignature, "base64")
+          Buffer.from(exampleSingleMessageG2KeySignature, "base64")
         )
       })
     ).toBe(true);
@@ -434,7 +442,7 @@ describe("Bls12381G2KeyPair", () => {
       await verify({
         data: exampleMultiMessage,
         signature: new Uint8Array(
-          Buffer.from(exampleMultiMessageSignature, "base64")
+          Buffer.from(exampleMultiMessageG2KeySignature, "base64")
         )
       })
     ).toBe(true);
