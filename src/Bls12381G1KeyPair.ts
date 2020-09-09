@@ -16,9 +16,7 @@ import { base64url } from "rfc4648";
 import bs58 from "bs58";
 import {
   DEFAULT_BLS12381_G1_PUBLIC_KEY_LENGTH,
-  generateBls12381G1KeyPair,
-  blsVerify,
-  blsSign
+  generateBls12381G1KeyPair
 } from "@mattrglobal/bbs-signatures";
 import {
   JsonWebKey,
@@ -70,34 +68,7 @@ const BLS12381G1_MULTICODEC_IDENTIFIER = 0xea;
  * using the private key passed in.
  */
 const signerFactory = (key: Bls12381G1KeyPair): KeyPairSigner => {
-  if (!key.privateKeyBuffer) {
-    return {
-      async sign(): Promise<Uint8Array> {
-        throw new Error("No private key to sign with.");
-      }
-    };
-  }
-  return {
-    async sign({ data }): Promise<Uint8Array> {
-      //TODO assert data runtime Uint8Array | Uint8Array[]
-      if (data instanceof Uint8Array) {
-        return blsSign({
-          messages: [data],
-          keyPair: {
-            secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
-            publicKey: new Uint8Array(key.publicKeyBuffer)
-          }
-        });
-      }
-      return blsSign({
-        messages: data,
-        keyPair: {
-          secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
-          publicKey: new Uint8Array(key.publicKeyBuffer)
-        }
-      });
-    }
-  };
+  throw new Error("Not Implemented");
 };
 
 /**
@@ -115,31 +86,7 @@ const signerFactory = (key: Bls12381G1KeyPair): KeyPairSigner => {
  * to the key passed in.
  */
 const verifierFactory = (key: Bls12381G1KeyPair): KeyPairVerifier => {
-  if (!key.publicKeyBuffer) {
-    return {
-      async verify(): Promise<boolean> {
-        throw new Error("No public key to verify with.");
-      }
-    };
-  }
-
-  return {
-    async verify({ data, signature }): Promise<boolean> {
-      //TODO assert data instance of Uint8Array | Uint8Array[]
-      if (data instanceof Uint8Array) {
-        return blsVerify({
-          messages: [data],
-          publicKey: new Uint8Array(key.publicKeyBuffer),
-          signature
-        }).verified;
-      }
-      return blsVerify({
-        messages: data,
-        publicKey: new Uint8Array(key.publicKeyBuffer),
-        signature
-      }).verified;
-    }
-  };
+  throw new Error("Not Implemented");
 };
 
 /**

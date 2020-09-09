@@ -13,13 +13,7 @@
 
 import {
   exampleBls12381G1JwkKeyPair,
-  exampleBls12381G1KeyPair,
-  exampleMultiMessage,
-  exampleMultiMessageG1KeySignature,
-  exampleSingleMessage,
-  exampleSingleMessageG1KeySignature,
-  badSignature,
-  badSignatureBadLength
+  exampleBls12381G1KeyPair
 } from "./__fixtures__";
 
 import { Bls12381G1KeyPair } from "../src";
@@ -28,11 +22,6 @@ import {
   DEFAULT_BLS12381_G1_PUBLIC_KEY_LENGTH
 } from "@mattrglobal/bbs-signatures";
 import base58 from "bs58";
-import { base64 } from "rfc4648";
-
-const key = new Bls12381G1KeyPair(exampleBls12381G1KeyPair);
-const { sign } = key.signer();
-const { verify } = key.verifier();
 
 describe("Bls12381G1KeyPair", () => {
   it("should load public private key from options", async () => {
@@ -288,7 +277,6 @@ describe("Bls12381G1KeyPair", () => {
       publicKeyBase58: myLdKey.publicKey
     });
 
-    // console.log(fingerprint);
     expect(fingerprint).toEqual(
       "z3tEGWeoHSJzYmJLezqJsbSBW31o3wuYRusP5Cp7JTkSeNSqQNMbrdZaDupQ7DHWGYoycM"
     );
@@ -401,80 +389,5 @@ describe("Bls12381G1KeyPair", () => {
         "7cJGQwV5XyzUjJEzY5doVhv62Qqou6qW7G4eh9YbUywgyeDCobiXjN8CnQ7wpWBrGR"
       )
     );
-  });
-
-  it.skip("should throw error on sign when no private key", async () => {
-    let keyOptions = exampleBls12381G1KeyPair;
-    delete keyOptions.privateKeyBase58;
-    const badKey = new Bls12381G1KeyPair(keyOptions);
-    const { sign } = badKey.signer();
-    expect(typeof sign).toBe("function");
-    await expect(sign({ data: exampleSingleMessage })).rejects.toThrowError(
-      "No private key to sign with."
-    );
-  });
-
-  it.skip("should sign single message", async () => {
-    expect(typeof sign).toBe("function");
-    const signature = await sign({ data: exampleSingleMessage });
-    expect(signature).toBeDefined();
-  });
-
-  it.skip("should sign multiple messages", async () => {
-    expect(typeof sign).toBe("function");
-    const signature = await sign({ data: exampleMultiMessage });
-    expect(signature).toBeDefined();
-  });
-
-  it.skip("should verify single message", async () => {
-    expect(typeof verify).toBe("function");
-    expect(
-      await verify({
-        data: exampleSingleMessage,
-        signature: new Uint8Array(
-          Buffer.from(exampleSingleMessageG1KeySignature, "base64")
-        )
-      })
-    ).toBe(true);
-  });
-
-  it.skip("should verify multiple messages", async () => {
-    expect(typeof verify).toBe("function");
-    expect(
-      await verify({
-        data: exampleMultiMessage,
-        signature: new Uint8Array(
-          Buffer.from(exampleMultiMessageG1KeySignature, "base64")
-        )
-      })
-    ).toBe(true);
-  });
-
-  it.skip("should not verify bad signature of correct length", async () => {
-    expect(typeof verify).toBe("function");
-    expect(
-      await verify({
-        data: exampleSingleMessage,
-        signature: new Uint8Array(Buffer.from(badSignature, "base64"))
-      })
-    ).toBe(false);
-  });
-
-  it.skip("should not verify bad signature of incorrect length", async () => {
-    expect(typeof verify).toBe("function");
-    expect(
-      await verify({
-        data: exampleSingleMessage,
-        signature: new Uint8Array(Buffer.from(badSignatureBadLength, "base64"))
-      })
-    ).toBe(false);
-  });
-
-  it.skip("should sign and verify multiple messages", async () => {
-    expect(typeof sign).toBe("function");
-    const signature = await sign({ data: exampleMultiMessage });
-    expect(signature).toBeDefined();
-    expect(typeof verify).toBe("function");
-    expect(await verify({ data: exampleMultiMessage, signature })).toBe(true);
   });
 });
