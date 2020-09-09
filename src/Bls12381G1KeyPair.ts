@@ -50,7 +50,7 @@ const MULTIBASE_ENCODED_BASE58_IDENTIFIER = "z";
 const VARIABLE_INTEGER_TRAILING_BYTE = 0x01;
 
 /**
- * 0xeb indicates a BLS 12-381 G1 public key
+ * 0xea indicates a BLS 12-381 G1 public key
  *
  */
 const BLS12381G1_MULTICODEC_IDENTIFIER = 0xea;
