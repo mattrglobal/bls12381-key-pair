@@ -12,9 +12,9 @@
  */
 
 export {
-  assertPrivateBlsJwk as assertPrivateJwk,
-  assertPublicBlsJwk as assertPublicJwk
-} from "./JsonWebKey";
+  assertBls12381G1PrivateJwk,
+  assertBls12381G1PublicJwk
+} from "./Bls12381G1Jwk";
 export {
   assertBls12381G2PrivateJwk,
   assertBls12381G2PublicJwk

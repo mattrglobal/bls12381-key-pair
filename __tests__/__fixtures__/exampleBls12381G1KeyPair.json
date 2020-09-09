@@ -1,0 +1,6 @@
+{
+  "id": "did:example:489398593#test",
+  "controller": "did:example:489398593",
+  "publicKeyBase58": "7cJGQwV5XyzUjJEzY5doVhv62Qqou6qW7G4eh9YbUywgyeDCobiXjN8CnQ7wpWBrGR",
+  "privateKeyBase58": "6DLV2ijYvG7Dh45sP7V9GfprG7sB26GYaJnSuFQX6cD1"
+}
