@@ -77,7 +77,7 @@ const signerFactory = (key: Bls12381G2KeyPair): KeyPairSigner => {
     async sign({ data }): Promise<Uint8Array> {
       //TODO assert data runtime Uint8Array | Uint8Array[]
       if (data instanceof Uint8Array) {
-        return blsSign({
+        return await blsSign({
           messages: [data],
           keyPair: {
             secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
@@ -85,7 +85,7 @@ const signerFactory = (key: Bls12381G2KeyPair): KeyPairSigner => {
           }
         });
       }
-      return blsSign({
+      return await blsSign({
         messages: data,
         keyPair: {
           secretKey: new Uint8Array(key.privateKeyBuffer as Uint8Array),
@@ -119,17 +119,21 @@ const verifierFactory = (key: Bls12381G2KeyPair): KeyPairVerifier => {
     async verify({ data, signature }): Promise<boolean> {
       //TODO assert data instance of Uint8Array | Uint8Array[]
       if (data instanceof Uint8Array) {
-        return blsVerify({
-          messages: [data],
+        return (
+          await blsVerify({
+            messages: [data],
+            publicKey: new Uint8Array(key.publicKeyBuffer),
+            signature
+          })
+        ).verified;
+      }
+      return (
+        await blsVerify({
+          messages: data,
           publicKey: new Uint8Array(key.publicKeyBuffer),
           signature
-        }).verified;
-      }
-      return blsVerify({
-        messages: data,
-        publicKey: new Uint8Array(key.publicKeyBuffer),
-        signature
-      }).verified;
+        })
+      ).verified;
     }
   };
 };
@@ -212,8 +216,8 @@ export class Bls12381G2KeyPair {
     options?: GenerateKeyPairOptions
   ): Promise<Bls12381G2KeyPair> {
     const keyPair = options?.seed
-      ? generateBls12381G2KeyPair(options.seed)
-      : generateBls12381G2KeyPair();
+      ? await generateBls12381G2KeyPair(options.seed)
+      : await generateBls12381G2KeyPair();
     return new Bls12381G2KeyPair({
       ...options,
       privateKeyBase58: bs58.encode(keyPair.secretKey as Uint8Array),

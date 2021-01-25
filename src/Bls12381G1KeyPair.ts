@@ -174,8 +174,8 @@ export class Bls12381G1KeyPair {
   ): Promise<Bls12381G1KeyPair> {
     // TODO: Do we want to set a minimum size input for the seed?
     const keyPair = options?.seed
-      ? generateBls12381G1KeyPair(options.seed)
-      : generateBls12381G1KeyPair();
+      ? await generateBls12381G1KeyPair(options.seed)
+      : await generateBls12381G1KeyPair();
     return new Bls12381G1KeyPair({
       ...options,
       privateKeyBase58: bs58.encode(keyPair.secretKey as Uint8Array),
