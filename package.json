@@ -1,6 +1,6 @@
 {
   "name": "@mattrglobal/bls12381-key-pair",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A library for using BLS 12-381 key pairs with BBS+ signatures",
   "homepage": "https://github.com/mattrglobal/bls12381-key-pair",
   "author": {
@@ -66,8 +66,8 @@
   },
   "dependencies": {
     "@mattrglobal/bbs-signatures": "0.5.0",
-    "rfc4648": "1.4.0",
-    "bs58": "4.0.1"
+    "bs58": "4.0.1",
+    "rfc4648": "1.4.0"
   },
   "husky": {
     "hooks": {

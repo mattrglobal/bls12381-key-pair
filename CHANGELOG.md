@@ -1,3 +1,13 @@
+# [0.5.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.4.0...v0.5.0) (2021-02-24)
+
+### Features
+
+- add async api support for bbs-signatures ([#33](https://github.com/mattrglobal/bls12381-key-pair/issues/33)) ([6b18486](https://github.com/mattrglobal/bls12381-key-pair/commit/6b1848617875d9db16b22f746c897614c8df0d90))
+- add support to convert to and from JWKs ([#25](https://github.com/mattrglobal/bls12381-key-pair/issues/25)) ([98235ce](https://github.com/mattrglobal/bls12381-key-pair/commit/98235ce2e2b0a8bdaa4aec85f3008ad057dbcade)), closes [#12](https://github.com/mattrglobal/bls12381-key-pair/issues/12)
+- adds support for G1 key pairs ([#26](https://github.com/mattrglobal/bls12381-key-pair/issues/26)) ([aeea218](https://github.com/mattrglobal/bls12381-key-pair/commit/aeea2183df7d7cf5d2599c42489f4b33cda62d22)), closes [#15](https://github.com/mattrglobal/bls12381-key-pair/issues/15)
+- bump bbs signatures version ([#34](https://github.com/mattrglobal/bls12381-key-pair/issues/34)) ([ad69446](https://github.com/mattrglobal/bls12381-key-pair/commit/ad69446b1941277c0af89911d14bcec6d527da9d))
+- update bls12381G2 names and add keylength check to the constructor ([#27](https://github.com/mattrglobal/bls12381-key-pair/issues/27)) ([3e11f99](https://github.com/mattrglobal/bls12381-key-pair/commit/3e11f99870de14b190a72ff05faae7d90fab1f18))
+
 # [0.4.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.3.0...v0.4.0) (2020-08-27)
 
 ### Bug Fixes
