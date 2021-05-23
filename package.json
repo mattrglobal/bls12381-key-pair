@@ -28,6 +28,9 @@
     "lib"
   ],
   "private": false,
+  "engines": {
+    "node": ">=11.0.0"
+  },
   "scripts": {
     "test:node": "BBS_SIGNATURES_MODE=\"NODE_JS_MODULE\" jest",
     "test:wasm": "BBS_SIGNATURES_MODE=\"WASM\" jest",
