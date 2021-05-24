@@ -69,7 +69,7 @@
     "typescript": "3.7.5"
   },
   "dependencies": {
-    "@mattrglobal/bbs-signatures": "0.5.1-unstable.ec016ef",
+    "@mattrglobal/bbs-signatures": "0.5.1-unstable.1c33d3b",
     "bs58": "4.0.1",
     "rfc4648": "1.4.0"
   },

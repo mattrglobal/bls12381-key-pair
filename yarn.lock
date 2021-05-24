@@ -606,13 +606,12 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@mattrglobal/bbs-signatures@0.5.1-unstable.ec016ef":
-  version "0.5.1-unstable.ec016ef"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.5.1-unstable.ec016ef.tgz#f9476db78fdd4a705d7bd99e911090c04e944a2a"
-  integrity sha512-pTxzSqSCH9YMzo1QrV8LDO6j21qYA2BnudJ0MOwDc4jb4iHexXUgWLTs0cjh4sM8QFBMF33bmmNzeILBThkCEg==
+"@mattrglobal/bbs-signatures@0.5.1-unstable.1c33d3b":
+  version "0.5.1-unstable.1c33d3b"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.5.1-unstable.1c33d3b.tgz#9ab44f2335fb3d07cad011e3843827af9957b913"
+  integrity sha512-1AKrM2inHFG6MgcQjgsrV5w2J0MudcreF5EP/DU+AkTffDPGE0BCUhmh/rVU/lIhM65RbIx+7FrON27QadBcUA==
   dependencies:
     "@stablelib/random" "1.0.0"
-    esm "3.2.25"
   optionalDependencies:
     "@mattrglobal/node-bbs-signatures" "0.12.0"
 
@@ -2230,11 +2229,6 @@ eslint@6.8.0:
     table "^5.2.3"
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
-
-esm@3.2.25:
-  version "3.2.25"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
-  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^6.1.2:
   version "6.2.1"
