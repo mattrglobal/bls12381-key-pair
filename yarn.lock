@@ -606,10 +606,10 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
-"@mattrglobal/bbs-signatures@0.5.1-unstable.1c33d3b":
-  version "0.5.1-unstable.1c33d3b"
-  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.5.1-unstable.1c33d3b.tgz#9ab44f2335fb3d07cad011e3843827af9957b913"
-  integrity sha512-1AKrM2inHFG6MgcQjgsrV5w2J0MudcreF5EP/DU+AkTffDPGE0BCUhmh/rVU/lIhM65RbIx+7FrON27QadBcUA==
+"@mattrglobal/bbs-signatures@0.5.1-unstable.bc3dabd":
+  version "0.5.1-unstable.bc3dabd"
+  resolved "https://registry.yarnpkg.com/@mattrglobal/bbs-signatures/-/bbs-signatures-0.5.1-unstable.bc3dabd.tgz#e0eb474311e603cf1dcbf973dca50943bb15ed82"
+  integrity sha512-TwtWhUgRaLN0BZE/b1Nr+8zJcHRYKYpgaIcx8xA7Uz6X5U1x3f/0cCCH30VueFc4wBxXdouEBruseydV7hgyhA==
   dependencies:
     "@stablelib/random" "1.0.0"
   optionalDependencies:
