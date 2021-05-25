@@ -1,3 +1,9 @@
+# [0.6.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.5.0...v0.6.0) (2021-05-25)
+
+### Features
+
+- bump bbs-signatures-dep ([#41](https://github.com/mattrglobal/bls12381-key-pair/issues/41)) ([6556d27](https://github.com/mattrglobal/bls12381-key-pair/commit/6556d27d82f45e6b149fc355d8512eb928ccd953))
+
 # [0.5.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.4.0...v0.5.0) (2021-02-24)
 
 ### Features
