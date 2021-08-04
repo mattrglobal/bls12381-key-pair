@@ -3,13 +3,13 @@
   "controller": "did:example:489398593",
   "publicKeyJwk": {
     "kid": "did:example:489398593#test",
-    "crv": "BLS12381_G2",
+    "crv": "Bls12381G2",
     "kty": "EC",
     "x": "h_rkcTKXXzRbOPr9UxSfegCbid2U_cVNXQUaKeGF7UhwrMJFP70uMH0VQ9-3-_2zDPAAjflsdeLkOXW3-ShktLxuPy8UlXSNgKNmkfb-rrj-FRwbs13pv_WsIf-eV66-"
   },
   "privateKeyJwk": {
     "kid": "did:example:489398593#test",
-    "crv": "BLS12381_G2",
+    "crv": "Bls12381G2",
     "kty": "EC",
     "x": "h_rkcTKXXzRbOPr9UxSfegCbid2U_cVNXQUaKeGF7UhwrMJFP70uMH0VQ9-3-_2zDPAAjflsdeLkOXW3-ShktLxuPy8UlXSNgKNmkfb-rrj-FRwbs13pv_WsIf-eV66-",
     "d": "PofPmtCTsMilP9gluxrSDTC7DPbKwSMEzxVCZxq_L2I"

@@ -11,9 +11,8 @@
  * limitations under the License.
  */
 
-export enum BlsCurveName {
-  DEPRECATED_G1 = "BLS12381_G1",
-  DEPRECATED_G2 = "BLS12381_G2",
-  G1 = "Bls12381G1",
-  G2 = "Bls12381G2"
+export enum JwkKty {
+  OctetKeyPair = "OKP",
+  EC = "EC",
+  RSA = "RSA"
 }

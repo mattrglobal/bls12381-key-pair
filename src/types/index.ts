@@ -14,6 +14,7 @@
 export { BlsCurveName } from "./BlsCurveName";
 export { GenerateKeyPairOptions } from "./GenerateKeyPairOptions";
 export { JsonWebKey } from "./JsonWebKey";
+export { JwkKty } from "./JwkKty";
 export { JwkKeyPairOptions } from "./JwkKeyPairOptions";
 export { KeyPairOptions } from "./KeyPairOptions";
 export { KeyPairSigner } from "./KeyPairSigner";
