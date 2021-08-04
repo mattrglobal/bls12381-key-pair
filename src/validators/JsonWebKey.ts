@@ -11,15 +11,21 @@
  * limitations under the License.
  */
 
-import { BlsCurveName, JsonWebKey } from "../types";
+import { BlsCurveName, JwkKty, JsonWebKey } from "../types";
 
 const checkCommonBlsJwkValues = (jwk: JsonWebKey): boolean => {
+  const allowedCurveNames: string[] = [
+    BlsCurveName.G1,
+    BlsCurveName.G2,
+    BlsCurveName.DEPRECATED_G1,
+    BlsCurveName.DEPRECATED_G2
+  ];
   return (
-    // A BLS key type MUST be set to "EC"
+    // A BLS key type MUST be set to "EC" or "OKP"
     typeof jwk !== "undefined" &&
-    jwk.kty === "EC" &&
-    // The curve property should indicate either "BLS12381_G1" or "BLS12381_G2"
-    (jwk.crv === BlsCurveName.G1 || jwk.crv === BlsCurveName.G2)
+    (jwk.kty === JwkKty.EC || jwk.kty === JwkKty.OctetKeyPair) &&
+    // The curve property should indicate either one of the types listed on allowedCurveNames
+    allowedCurveNames.indexOf(jwk.crv) >= 0
   );
 };
 

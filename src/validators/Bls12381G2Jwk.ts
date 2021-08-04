@@ -18,7 +18,7 @@ export const assertBls12381G2PublicJwk = (jwk: JsonWebKey): boolean => {
   // Returns false because the BLS12-381 G2 x coordinate is not the proper length
   return (
     assertPublicBlsJwk(jwk) &&
-    jwk.crv === BlsCurveName.G2 &&
+    (jwk.crv === BlsCurveName.DEPRECATED_G2 || jwk.crv === BlsCurveName.G2) &&
     jwk.x.length === 128
   );
 };
@@ -27,7 +27,7 @@ export const assertBls12381G2PrivateJwk = (jwk: JsonWebKey): boolean => {
   // Returns false because the BLS12-381 G2 x coordinate is not the proper length
   return (
     assertPrivateBlsJwk(jwk) &&
-    jwk.crv === BlsCurveName.G2 &&
+    (jwk.crv === BlsCurveName.DEPRECATED_G2 || jwk.crv === BlsCurveName.G2) &&
     jwk.x.length === 128
   );
 };
