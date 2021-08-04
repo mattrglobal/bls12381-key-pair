@@ -1,3 +1,9 @@
+# [0.7.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.6.0...v0.7.0) (2021-08-04)
+
+### Features
+
+- add support for octet key pair and add new curve names ([#51](https://github.com/mattrglobal/bls12381-key-pair/issues/51)) ([375ccf1](https://github.com/mattrglobal/bls12381-key-pair/commit/375ccf1be7ab47b47f16bf92b51db0bd611d1d9d))
+
 # [0.6.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.5.0...v0.6.0) (2021-05-25)
 
 ### Features
