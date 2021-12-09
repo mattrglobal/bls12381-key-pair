@@ -3,7 +3,6 @@
 ### Features
 
 - bump bbs-signatures dependency ([ac326b3](https://github.com/mattrglobal/bls12381-key-pair/pull/58/commits/ac326b34e33ad7ee4cfa175892d2fdfd41598cc9))
-- add support for octet key pair and add new curve names ([#51](https://github.com/mattrglobal/bls12381-key-pair/issues/51)) ([375ccf1](https://github.com/mattrglobal/bls12381-key-pair/commit/375ccf1be7ab47b47f16bf92b51db0bd611d1d9d))
 
 # [0.7.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.6.0...v0.7.0) (2021-08-04)
 
