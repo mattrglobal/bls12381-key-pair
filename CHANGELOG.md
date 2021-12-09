@@ -1,3 +1,9 @@
+# [0.8.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.6.0...v0.8.0) (2021-12-09)
+
+### Features
+
+- bump bbs-signatures dependency ([ac326b3](https://github.com/mattrglobal/bls12381-key-pair/pull/58/commits/ac326b34e33ad7ee4cfa175892d2fdfd41598cc9))
+
 # [0.7.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.6.0...v0.7.0) (2021-08-04)
 
 ### Features
