@@ -1,3 +1,5 @@
+# [1.0.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.8.0...1.0.0) (2022-01-13)
+
 # [0.8.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.7.0...0.8.0) (2021-12-09)
 
 ### Features
