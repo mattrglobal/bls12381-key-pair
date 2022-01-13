@@ -1,22 +1,22 @@
-# [0.8.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.6.0...v0.8.0) (2021-12-09)
+# [0.8.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.7.0...0.8.0) (2021-12-09)
 
 ### Features
 
 - bump bbs-signatures dependency ([ac326b3](https://github.com/mattrglobal/bls12381-key-pair/pull/58/commits/ac326b34e33ad7ee4cfa175892d2fdfd41598cc9))
 
-# [0.7.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.6.0...v0.7.0) (2021-08-04)
+# [0.7.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.6.0...0.7.0) (2021-08-04)
 
 ### Features
 
 - add support for octet key pair and add new curve names ([#51](https://github.com/mattrglobal/bls12381-key-pair/issues/51)) ([375ccf1](https://github.com/mattrglobal/bls12381-key-pair/commit/375ccf1be7ab47b47f16bf92b51db0bd611d1d9d))
 
-# [0.6.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.5.0...v0.6.0) (2021-05-25)
+# [0.6.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.5.0...0.6.0) (2021-05-25)
 
 ### Features
 
 - bump bbs-signatures-dep ([#41](https://github.com/mattrglobal/bls12381-key-pair/issues/41)) ([6556d27](https://github.com/mattrglobal/bls12381-key-pair/commit/6556d27d82f45e6b149fc355d8512eb928ccd953))
 
-# [0.5.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.4.0...v0.5.0) (2021-02-24)
+# [0.5.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.4.0...0.5.0) (2021-02-24)
 
 ### Features
 
@@ -26,7 +26,7 @@
 - bump bbs signatures version ([#34](https://github.com/mattrglobal/bls12381-key-pair/issues/34)) ([ad69446](https://github.com/mattrglobal/bls12381-key-pair/commit/ad69446b1941277c0af89911d14bcec6d527da9d))
 - update bls12381G2 names and add keylength check to the constructor ([#27](https://github.com/mattrglobal/bls12381-key-pair/issues/27)) ([3e11f99](https://github.com/mattrglobal/bls12381-key-pair/commit/3e11f99870de14b190a72ff05faae7d90fab1f18))
 
-# [0.4.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.3.0...v0.4.0) (2020-08-27)
+# [0.4.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.3.0...0.4.0) (2020-08-27)
 
 ### Bug Fixes
 
@@ -43,13 +43,13 @@
 
 - All operations involving messages and nonces for bbs signatures are now in terms of Uint8Array's rather than strings
 
-# [0.3.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.2.0...v0.3.0) (2020-05-25)
+# [0.3.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.2.0...0.3.0) (2020-05-25)
 
 ### Features
 
 - update bbs dependency to latest ([#5](https://github.com/mattrglobal/bls12381-key-pair/issues/5)) ([03a6db8](https://github.com/mattrglobal/bls12381-key-pair/commit/03a6db802c97d08bd9e441a5300b82415976bde5))
 
-# [0.2.0](https://github.com/mattrglobal/bls12381-key-pair/compare/v0.1.0...v0.2.0) (2020-05-09)
+# [0.2.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.1.0...0.2.0) (2020-05-09)
 
 ### Features
 

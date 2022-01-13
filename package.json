@@ -34,6 +34,7 @@
   "scripts": {
     "test:node": "BBS_SIGNATURES_MODE=\"NODE_JS_MODULE\" jest",
     "test:wasm": "BBS_SIGNATURES_MODE=\"WASM\" jest",
+    "test": "yarn test:node && yarn test:wasm",
     "build": "tsc --pretty",
     "clean": "rm -rf lib/",
     "format": "prettier --write \"**/*.ts\" \"**/*.md\"  \"!**/lib/**\"",

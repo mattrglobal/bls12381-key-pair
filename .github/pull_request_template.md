@@ -9,7 +9,7 @@ Provide a general summary of your changes in the Title above
 - [ ] Tests for the changes have been added (for bug fixes / features)
 - [ ] The commit message(s) follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [ ] Documentation has been added / updated (for bug fixes / features)
-- [ ] Changes follow the **[contributing](../docs/CONTRIBUTING.md)** document.
+- [ ] Changes follow the **[contributing](../blob/master/docs/CONTRIBUTING.md)** document.
 
 ## Motivation and Context
 
