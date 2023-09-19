@@ -1,3 +1,14 @@
+# [1.1.0](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...1.1.0) (2023-09-19)
+
+### Features
+
+- bump bbs-signatures dependency ([69c5bea](https://github.com/mattrglobal/bls12381-key-pair/pull/70/commits/69c5beaf7df9a7a349a27504d9fd347004329d28))
+- bump rfc4648 dependency ([69c5bea](https://github.com/mattrglobal/bls12381-key-pair/pull/70/commits/69c5beaf7df9a7a349a27504d9fd347004329d28))
+
+### BREAKING CHANGES
+
+- new minimal `engines.node` version of ">=14.0.0" ([c752dec](https://github.com/mattrglobal/bls12381-key-pair/pull/70/commits/c752dec5b09dc77ae6b941a23d02823e8537876f))
+
 # [1.0.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.8.0...1.0.0) (2022-01-13)
 
 # [0.8.0](https://github.com/mattrglobal/bls12381-key-pair/compare/0.7.0...0.8.0) (2021-12-09)
