@@ -22,6 +22,7 @@ import {
   DEFAULT_BLS12381_G1_PUBLIC_KEY_LENGTH
 } from "@mattrglobal/bbs-signatures";
 import base58 from "bs58";
+import { JwkKeyPairOptions } from "../src/types";
 
 describe("Bls12381G1KeyPair", () => {
   it("should load public private key from options", async () => {
@@ -96,9 +97,10 @@ describe("Bls12381G1KeyPair", () => {
   });
 
   it("should load public key from options", async () => {
-    let keyOptions = { ...exampleBls12381G1KeyPair };
-    delete keyOptions.privateKeyBase58;
-
+    const keyOptions = {
+      ...exampleBls12381G1KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = new Bls12381G1KeyPair(keyOptions);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -117,9 +119,10 @@ describe("Bls12381G1KeyPair", () => {
   });
 
   it("should load public key from options using .from()", async () => {
-    let keyOptions = { ...exampleBls12381G1KeyPair };
-    delete keyOptions.privateKeyBase58;
-
+    const keyOptions = {
+      ...exampleBls12381G1KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = await Bls12381G1KeyPair.from(keyOptions);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -138,9 +141,10 @@ describe("Bls12381G1KeyPair", () => {
   });
 
   it("should load public key from options using .fromJwk()", async () => {
-    let keyOptions = { ...exampleBls12381G1JwkKeyPair };
-    delete keyOptions.privateKeyJwk;
-
+    const keyOptions = {
+      ...exampleBls12381G1JwkKeyPair,
+      privateKeyJwk: undefined
+    };
     const myLdKey = await Bls12381G1KeyPair.fromJwk(keyOptions);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -159,18 +163,17 @@ describe("Bls12381G1KeyPair", () => {
   });
 
   it("should throw an error when no JWK from options using .fromJwk()", async () => {
-    let keyOptions = { ...exampleBls12381G1JwkKeyPair };
-    delete keyOptions.privateKeyJwk;
-    delete keyOptions.publicKeyJwk;
+    const keyOptions = ({
+      ...exampleBls12381G1JwkKeyPair,
+      privateKeyJwk: undefined,
+      publicKeyJwk: undefined
+    } as unknown) as JwkKeyPairOptions;
     await expect(Bls12381G1KeyPair.fromJwk(keyOptions)).rejects.toThrow(
       "The JWK provided is not a valid"
     );
   });
 
   it("should load public key from fingerprint", async () => {
-    let keyOptions = { ...exampleBls12381G1KeyPair };
-    delete keyOptions.privateKeyBase58;
-
     const myLdKey = Bls12381G1KeyPair.fromFingerprint({
       fingerprint: `z3tEGWeoHSJzYmJLezqJsbSBW31o3wuYRusP5Cp7JTkSeNSqQNMbrdZaDupQ7DHWGYoycM`
     });
@@ -257,15 +260,19 @@ describe("Bls12381G1KeyPair", () => {
   });
 
   it("should return undefined for privateKeyJwk when no privateKeyBuffer exists", async () => {
-    let keyOptions = { ...exampleBls12381G1JwkKeyPair };
-    delete keyOptions.privateKeyJwk;
+    const keyOptions = {
+      ...exampleBls12381G1JwkKeyPair,
+      privateKeyJwk: undefined
+    };
     const myLdKey = await Bls12381G1KeyPair.fromJwk(keyOptions);
     expect(myLdKey.privateKeyJwk).toBeUndefined();
   });
 
   it("should return undefined for privateKey when no privateKeyBuffer exists", async () => {
-    let keyOptions = { ...exampleBls12381G1KeyPair };
-    delete keyOptions.privateKeyBase58;
+    const keyOptions = {
+      ...exampleBls12381G1KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = await Bls12381G1KeyPair.from(keyOptions);
     expect(myLdKey.privateKey).toBeUndefined();
   });

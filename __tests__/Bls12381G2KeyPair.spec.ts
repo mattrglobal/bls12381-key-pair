@@ -28,6 +28,7 @@ import {
   DEFAULT_BLS12381_G2_PUBLIC_KEY_LENGTH
 } from "@mattrglobal/bbs-signatures";
 import base58 from "bs58";
+import { JwkKeyPairOptions } from "../src/types";
 
 const key = new Bls12381G2KeyPair(exampleBls12381G2KeyPair);
 const { sign } = key.signer();
@@ -106,9 +107,10 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should load public key from options", async () => {
-    let keyOptions = { ...exampleBls12381G2KeyPair };
-    delete keyOptions.privateKeyBase58;
-
+    const keyOptions = {
+      ...exampleBls12381G2KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = new Bls12381G2KeyPair(keyOptions);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -127,9 +129,10 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should load public key from options using .from()", async () => {
-    let keyOptions = { ...exampleBls12381G2KeyPair };
-    delete keyOptions.privateKeyBase58;
-
+    const keyOptions = {
+      ...exampleBls12381G2KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = await Bls12381G2KeyPair.from(keyOptions);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -148,9 +151,10 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should load public key from options using .fromJwk()", async () => {
-    let keyOptions = { ...exampleBls12381G2JwkKeyPair };
-    delete keyOptions.privateKeyJwk;
-
+    const keyOptions = {
+      ...exampleBls12381G2JwkKeyPair,
+      privateKeyJwk: undefined
+    };
     const myLdKey = await Bls12381G2KeyPair.fromJwk(keyOptions);
 
     expect(myLdKey.id).toBe("did:example:489398593#test");
@@ -169,18 +173,21 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should throw an error when no JWK from options using .fromJwk()", async () => {
-    let keyOptions = { ...exampleBls12381G2JwkKeyPair };
-    delete keyOptions.privateKeyJwk;
-    delete keyOptions.publicKeyJwk;
+    const keyOptions = ({
+      ...exampleBls12381G2JwkKeyPair,
+      privateKeyJwk: undefined,
+      publicKeyJwk: undefined
+    } as unknown) as JwkKeyPairOptions;
     await expect(Bls12381G2KeyPair.fromJwk(keyOptions)).rejects.toThrow(
       "The JWK provided is not a valid"
     );
   });
 
   it("should load public key from fingerprint", async () => {
-    let keyOptions = { ...exampleBls12381G2KeyPair };
-    delete keyOptions.privateKeyBase58;
-
+    const keyOptions = {
+      ...exampleBls12381G2KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = Bls12381G2KeyPair.fromFingerprint({
       fingerprint: `zUC73gNPc1EnZmDDjYJzE8Bk89VRhuZPQYXFnSiSUZvX9N1i7N5VtMbJyowDR46rtARHLJYRVf7WMbGLb43s9tfTyKF9KFF22vBjXZRomcwtoQJmMNUSY7tfzyhLEy58dwUz3WD`
     });
@@ -267,15 +274,19 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should return undefined for privateKeyJwk when no privateKeyBuffer exists", async () => {
-    let keyOptions = { ...exampleBls12381G2JwkKeyPair };
-    delete keyOptions.privateKeyJwk;
+    const keyOptions = {
+      ...exampleBls12381G2JwkKeyPair,
+      privateKeyJwk: undefined
+    };
     const myLdKey = await Bls12381G2KeyPair.fromJwk(keyOptions);
     expect(myLdKey.privateKeyJwk).toBeUndefined();
   });
 
   it("should return undefined for privateKey when no privateKeyBuffer exists", async () => {
-    let keyOptions = { ...exampleBls12381G2KeyPair };
-    delete keyOptions.privateKeyBase58;
+    const keyOptions = {
+      ...exampleBls12381G2KeyPair,
+      privateKeyBase58: undefined
+    };
     const myLdKey = await Bls12381G2KeyPair.from(keyOptions);
     expect(myLdKey.privateKey).toBeUndefined();
   });
@@ -402,8 +413,10 @@ describe("Bls12381G2KeyPair", () => {
   });
 
   it("should throw error on sign when no private key", async () => {
-    let keyOptions = exampleBls12381G2KeyPair;
-    delete keyOptions.privateKeyBase58;
+    const keyOptions = {
+      ...exampleBls12381G2KeyPair,
+      privateKeyBase58: undefined
+    };
     const badKey = new Bls12381G2KeyPair(keyOptions);
     const { sign } = badKey.signer();
     expect(typeof sign).toBe("function");
