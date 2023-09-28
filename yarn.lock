@@ -1024,10 +1024,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-13.13.4.tgz#1581d6c16e3d4803eb079c87d4ac893ee7501c2c"
   integrity sha512-x26ur3dSXgv5AwKS0lNfbjpCakGIduWU1DU91Zz58ONRWrIKGunmZBNv4P7N+e27sJkiGDsw/3fT4AtsqQBrBA==
 
-"@types/node@14.18.63":
-  version "14.18.63"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.63.tgz#1788fa8da838dbb5f9ea994b834278205db6ca2b"
-  integrity sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==
+"@types/node@18.18.0":
+  version "18.18.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.18.0.tgz#bd19d5133a6e5e2d0152ec079ac27c120e7f1763"
+  integrity sha512-3xA4X31gHT1F1l38ATDIL9GpRLdwVhnEFC8Uikv5ZLlXATwrCYyPq7ZWHxzxc3J/30SUiwiYT+bQe0/XvKlWbw==
 
 "@types/node@20.4.7":
   version "20.4.7"
