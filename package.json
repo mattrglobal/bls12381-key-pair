@@ -89,5 +89,13 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "resolutions": {
+    "conventional-changelog/**/minimist": "1.2.8",
+    "conventional-changelog/**/shelljs": "0.8.5",
+    "cz-conventional-changelog/**/merge": "2.1.1",
+    "cz-conventional-changelog/**/minimist": "1.2.8",
+    "cz-conventional-changelog/**/shelljs": "0.8.5",
+    "**/lodash": "4.17.21"
   }
 }
