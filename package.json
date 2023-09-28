@@ -29,7 +29,10 @@
   ],
   "private": false,
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=14.0.0"
+  },
+  "devEngines": {
+    "node": "16.x || 18.x"
   },
   "scripts": {
     "test:node": "BBS_SIGNATURES_MODE=\"NODE_JS_MODULE\" jest",
