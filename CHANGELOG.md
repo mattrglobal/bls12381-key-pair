@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...1.2.0) (2023-09-29)
+
+### Features
+
+- update `@mattrglobal/bbs-signatures` to version 1.3.0 ([d479c72](https://github.com/mattrglobal/bls12381-key-pair/commit/d479c72132be873e3ffbf9e03eda2e17066e2343))
+
 # [1.1.0](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...1.1.0) (2023-09-19)
 
 ### Features
