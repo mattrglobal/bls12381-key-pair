@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...1.2.2) (2024-07-26)
+
+### Features
+
+- adding github actions to backup repository to s3 ([#62](https://github.com/mattrglobal/bls12381-key-pair/issues/62)) ([23922aa](https://github.com/mattrglobal/bls12381-key-pair/commit/23922aaaaf0840ba56684f9d9eafd9446b45a448))
+
 # [1.2.1](https://github.com/mattrglobal/bls12381-key-pair/compare/1.2.0...1.2.1) (2023-10-04)
 
 ### Features
