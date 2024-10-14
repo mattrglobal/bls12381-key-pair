@@ -478,11 +478,11 @@ export class Bls12381G2KeyPair {
     } catch (e) {
       return { error: e, valid: false };
     }
-    const publicKeyBuffer = new Buffer(this.publicKeyBuffer);
+    const publicKeyBuffer = Buffer.from(this.publicKeyBuffer);
 
     // validate the first two multicodec bytes 0xeb01
     const valid =
-      fingerprintBuffer.slice(0, 2).toString("hex") === "eb01" &&
+      Buffer.from(fingerprintBuffer.slice(0, 2)).toString("hex") === "eb01" &&
       publicKeyBuffer.equals(fingerprintBuffer.slice(2));
     if (!valid) {
       return {
