@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...2.0.0) (2024-10-15)
+
+### Build System
+
+- **deps:** bump @mattrglobal/bbs-signatures, bs58 and rfc4648 ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+
+### Features
+
+- adding github actions to backup repository to s3 ([#62](https://github.com/mattrglobal/bls12381-key-pair/issues/62)) ([23922aa](https://github.com/mattrglobal/bls12381-key-pair/commit/23922aaaaf0840ba56684f9d9eafd9446b45a448))
+
+### BREAKING CHANGES
+
+- **deps:** removes support for Node lower than 18
+
+- ci: add node 20.x and 22.x
+
 ## [1.2.2](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...1.2.2) (2024-07-26)
 
 ### Features
