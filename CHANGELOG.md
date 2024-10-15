@@ -1,3 +1,20 @@
+# [2.0.0](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...2.0.0) (2024-10-15)
+
+### Build System
+
+- add node 20.x and 22.x to ci ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+
+### Features
+
+- bump `@mattrglobal/bbs-signatures` from 1.4.0 to 2.0.0 ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+- bump `bs58` from 4.0.1 to 6.0.0 ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+- bump `rfc4648` from 1.5.2 to 1.5.3 ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+- add support for node version 20 and 22 ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+
+### BREAKING CHANGES
+
+- removes support for node version lower than 18 ([#96](https://github.com/mattrglobal/bls12381-key-pair/issues/96)) ([363e527](https://github.com/mattrglobal/bls12381-key-pair/commit/363e52735f7813ac7ae279379ad1adc2ecaccb0b))
+
 ## [1.2.2](https://github.com/mattrglobal/bls12381-key-pair/compare/1.0.0...1.2.2) (2024-07-26)
 
 ### Features
